@@ -183,6 +183,12 @@ SQL:
 
 ---
 
+---
+## Requirements
+* VaultAPI
+---
+
+
 ## Notes
 
 - The MiniMessage format is highly flexible for styling and formatting messages. Refer to the [MiniMessage documentation](https://docs.advntr.dev/minimessage/format.html) for more details.
