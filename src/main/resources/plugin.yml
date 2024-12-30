@@ -1,0 +1,7 @@
+name: VaxBank
+version: '1.0-SNAPSHOT'
+main: de.varilx.vaxbank.VBank
+api-version: '1.21'
+
+depend:
+  - Vault
