@@ -2,9 +2,8 @@ package de.varilx.vaxbank.user;
 
 
 import de.varilx.database.id.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import de.varilx.vaxbank.transaction.BankTransaction;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,11 +21,24 @@ public class BankUser {
 
     @Id
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     UUID uniqueId;
 
     String name;
     double balance;
-    List<UUID> transactions;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    List<BankTransaction> transactions;
+
+    public void addBalance(double amount) {
+        this.balance += amount;
+    }
+
+    public void removeBalance(double amount) {
+        this.balance -= amount;
+    }
+
+    public void addTransaction(BankTransaction transaction) {
+        this.transactions.add(transaction);
+    }
 
 }
