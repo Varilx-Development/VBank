@@ -1,12 +1,17 @@
 # Using Minimessage https://docs.advntr.dev/minimessage/format.html
 
 currency_name: "coins"
-prefix: "<b><dark_gray>[<gradient:#2986D7:#9206C2>VBank</gradient><dark_gray>]<reset><gray> "
+prefix: "<b><dark_gray>[<gradient:#119143:#053E88>VBank</gradient><dark_gray>]<reset><gray> "
 no_permission: "<prefix><red>You don't have Permission to do this!"
+user_not_found: "<prefix><red>This user does not exist"
 input_no_number: "<prefix><red>Enter a valid number"
 not_enough_money: "<prefix>You don't have enough money"
 bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yellow><amount> <currency_name> <gray>into your bank account"
 bank_withdraw_success: "<prefix>u have <green>successfully <gray>withdrawed <yellow><amount> <currency_name> <gray>from your bank account"
+bank_reset_success: "<prefix><green>The player's bank account has been reset"
+bank_set_success: "<prefix><gray>The player's bank account has been set to <yellow><balance>"
+bank_add_success: "<prefix><gray>You added <yellow><amount> <gray>to players bank account"
+bank_remove_success: "<prefix><gray>You removed <yellow><amount> <gray>to players bank account"
 input_number_positive: "<prefix>Enter a positive number"
 conversation_prompt: "<prefix>Please enter an amount. <newline> <prefix>Write <dark_gray>'<red>cancel<dark_gray>'<gray> to cancel"
 date_format: "MM/dd/yyyy - hh:mm a"
@@ -81,3 +86,17 @@ Commands:
     Arguments:
       Add: 'add'
       Remove: 'remove'
+  BankAdminCommand:
+    Name: 'bankadmin'
+    Permission: 'vbank.bankadmin'
+    Arguments:
+      Add: 'add'
+      Remove: 'remove'
+      Reset: 'reset'
+      Set: 'set'
+    Usage:
+      - "<prefix>BankAdmin help<dark_gray>:"
+      - "<prefix>Use <yellow>/bankadmin add <dark_gray><<yellow>Player<dark_gray>> <<yellow>Amount<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin remove <dark_gray><<yellow>Player<dark_gray>> <<yellow>Amount<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin set <dark_gray><<yellow>Player<dark_gray>> <<yellow>Amount<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin reset <dark_gray><<yellow>Player<dark_gray>>"

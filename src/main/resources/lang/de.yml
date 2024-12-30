@@ -1,13 +1,17 @@
 # Minimessage https://docs.advntr.dev/minimessage/format.html
 
 currency_name: "Coins"
-prefix: "<b><dark_gray>[<gradient:#2986D7:#9206C2>VBank</gradient><dark_gray>]<reset><gray> "
+prefix: "<b><dark_gray>[<gradient:#119143:#053E88>VBank</gradient><dark_gray>]<reset><gray> "
 no_permission: "<prefix><red>Das darfst du nicht!"
+user_not_found: "<prefix><red>Dieser User existiert nicht"
 input_no_number: "<prefix><red>Gebe eine gültige Zahl an!"
 not_enough_money: "<prefix><red>Du hast nicht genug Geld!"
 bank_deposit_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <currency_name> <gray>auf dein Bankkonto eingezahlt"
 input_number_positive: "<prefix><red>Gebe eine Positive Zahl an!"
 bank_withdraw_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <currency_name> <gray>von deinem Bankkonto abgehoben"
+bank_reset_success: "<prefix><green>Das Bankkonto des Spieler's wurde resettet"
+bank_set_success: "<prefix><gray>Du hast das Bankkonto des Spieler's auf <yellow><balance> <gray>gesetzt"
+bank_add_success: "<prefix><gray>Du hast dem Bankkonto <yellow><amount> <gray>entfernt"
 conversation_prompt: "<prefix>Bitte gebe eine Anzahl an. <newline> <prefix>Schreibe <dark_gray>'<red>abbrechen<dark_gray>'<gray> zum abbrechen"
 date_format: "dd.MM.yyyy - HH:mm"
 add: "<green>Einzahlung"
@@ -71,3 +75,17 @@ Commands:
     Arguments:
       Add: 'einzahlen'
       Remove: 'auszahlen'
+  BankAdminCommand:
+    Name: 'bankadmin'
+    Permission: 'vbank.bankadmin'
+    Arguments:
+      Add: 'add'
+      Remove: 'remove'
+      Reset: 'reset'
+      Set: 'set'
+    Usage:
+      - "<prefix>BankAdmin Hilfe<dark_gray>:"
+      - "<prefix>Use <yellow>/bankadmin add <dark_gray><<yellow>Spieler<dark_gray>> <<yellow>Menge<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin remove <dark_gray><<yellow>Spieler<dark_gray>> <<yellow>Menge<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin set <dark_gray><<yellow>Spieler<dark_gray>> <<yellow>Menge<dark_gray>>"
+      - "<prefix>Use <yellow>/bankadmin reset <dark_gray><<yellow>Spieler<dark_gray>>"
