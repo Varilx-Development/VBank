@@ -9,9 +9,14 @@ bank_deposit_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <curr
 input_number_positive: "<prefix><red>Gebe eine Positive Zahl an!"
 bank_withdraw_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <currency_name> <gray>von deinem Bankkonto abgehoben"
 conversation_prompt: "<prefix>Bitte gebe eine Anzahl an. <newline> <prefix>Schreibe <dark_gray>'<red>abbrechen<dark_gray>'<gray> zum abbrechen"
+date_format: "dd.MM.yyyy - HH:mm"
+add: "<green>Einzahlung"
+remove: "<red>Abhebung"
 
 withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
 deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
+transaction_item_add_skull: "https://textures.minecraft.net/texture/5ff31431d64587ff6ef98c0675810681f8c13bf96f51d9cb07ed7852b2ffd1"
+transaction_item_remove_skull: "https://textures.minecraft.net/texture/4e4b8b8d2362c864e062301487d94d3272a6b570afbf80c2c5b148c954579d46"
 
 Gui:
   Title: "<prefix>Bankaccount"
@@ -40,6 +45,25 @@ Gui:
       Lore:
         - ""
         - "<!i><dark_gray>» <gray>Klicke hier um deine Transaktionen zu sehen"
+
+TransactionsGui:
+  Title: "<prefix> Transactions"
+  Items:
+    Placeholders:
+      1:
+        Material: "GRAY_STAINED_GLASS_PANE"
+    TransactionItem:
+      Name: "<red>Transaction <dark_gray>| <yellow><date>"
+      Lore:
+        - ""
+        - "<dark_gray>| <gray>Menge <dark_gray>» <yellow><amount>"
+        - "<dark_gray>| <gray>Guthaben <dark_gray>» <yellow><balance>"
+        - "<dark_gray>| <gray>Typ <dark_gray>» <yellow><type>"
+      BackItem:
+        Name: "<red>Zurück"
+        Lore:
+          - ""
+          - "<dark_gray>| <gray>Klicke hier um eine Seite zurück zu gehen"
 
 Commands:
   BankCommand:

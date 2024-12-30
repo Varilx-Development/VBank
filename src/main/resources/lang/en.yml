@@ -9,9 +9,17 @@ bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yello
 bank_withdraw_success: "<prefix>u have <green>successfully <gray>withdrawed <yellow><amount> <currency_name> <gray>from your bank account"
 input_number_positive: "<prefix>Enter a positive number"
 conversation_prompt: "<prefix>Please enter an amount. <newline> <prefix>Write <dark_gray>'<red>cancel<dark_gray>'<gray> to cancel"
+date_format: "MM/dd/yyyy - hh:mm a"
+add: "<green>Add"
+remove: "<red>Remove"
+
 
 withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
 deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
+transaction_item_add_skull: "https://textures.minecraft.net/texture/5ff31431d64587ff6ef98c0675810681f8c13bf96f51d9cb07ed7852b2ffd1"
+transaction_item_remove_skull: "https://textures.minecraft.net/texture/4e4b8b8d2362c864e062301487d94d3272a6b570afbf80c2c5b148c954579d46"
+back_skull: "https://textures.minecraft.net/texture/bd8a99db2c37ec71d7199cd52639981a7513ce9cca9626a3936f965b131193"
+next_skull: "https://textures.minecraft.net/texture/3edd20be93520949e6ce789dc4f43efaeb28c717ee6bfcbbe02780142f716"
 
 Gui:
   Title: "<prefix>Bankaccount"
@@ -43,6 +51,29 @@ Gui:
         - ""
         - "<!i><dark_gray>» <gray>Click here to see your transactions"
 
+TransactionsGui:
+  Title: "<prefix> Transactions"
+  Items:
+    Placeholders:
+      1:
+        Material: "GRAY_STAINED_GLASS_PANE"
+    TransactionItem:
+      Name: "<red>Transaction <dark_gray>| <yellow><date>"
+      Lore:
+        - ""
+        - "<dark_gray>| <gray>Amount <dark_gray>» <yellow><amount>"
+        - "<dark_gray>| <gray>Balance <dark_gray>» <yellow><balance>"
+        - "<dark_gray>| <gray>Type <dark_gray>» <yellow><type>"
+    BackItem:
+      Name: "<red>Back"
+      Lore:
+        - ""
+        - "<dark_gray>| <gray>Click here to go back one page"
+    NextItem:
+      Name: "<green>Next"
+      Lore:
+        - ""
+        - "<dark_gray>| <gray>Klicke hier um zur nächsten Seite zu gelangen"
 
 Commands:
   BankCommand:
