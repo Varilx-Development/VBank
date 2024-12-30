@@ -8,6 +8,7 @@ not_enough_money: "<prefix>You don't have enough money"
 bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yellow><amount> <currency_name> <gray>into your bank account"
 bank_withdraw_success: "<prefix>u have <green>successfully <gray>withdrawed <yellow><amount> <currency_name> <gray>from your bank account"
 input_number_positive: "<prefix>Enter a positive number"
+conversation_prompt: "<prefix>Please enter an amount. <newline> <prefix>Write <dark_gray>'<red>cancel<dark_gray>'<gray> to cancel"
 
 withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
 deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
@@ -25,7 +26,7 @@ Gui:
       Name: "<gold>Balance"
       Lore:
         - ""
-        - "<dark_gray>» <yellow><balance> <balance_name>"
+        - "<dark_gray>» <yellow><balance> <currency_name>"
     Withdraw:
       Name: "<red>Withdraw money"
       Lore:
