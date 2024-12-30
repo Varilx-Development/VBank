@@ -76,3 +76,7 @@ tasks {
     }
 }
 
+shadowJar {
+    archiveFileName.set("VBank-$project_version" + ".jar")
+}
+
