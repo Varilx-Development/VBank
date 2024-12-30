@@ -12,6 +12,7 @@ bank_withdraw_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <cur
 bank_reset_success: "<prefix><green>Das Bankkonto des Spieler's wurde resettet"
 bank_set_success: "<prefix><gray>Du hast das Bankkonto des Spieler's auf <yellow><balance> <gray>gesetzt"
 bank_add_success: "<prefix><gray>Du hast dem Bankkonto <yellow><amount> <gray>entfernt"
+bank_balance: "<prefix>Das Bankkont hat <yellow><balance><currency_name>"
 conversation_prompt: "<prefix>Bitte gebe eine Anzahl an. <newline> <prefix>Schreibe <dark_gray>'<red>abbrechen<dark_gray>'<gray> zum abbrechen"
 date_format: "dd.MM.yyyy - HH:mm"
 add: "<green>Einzahlung"
