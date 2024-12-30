@@ -1,8 +1,11 @@
 # Minimessage https://docs.advntr.dev/minimessage/format.html
 
+currency_name: "Coins"
 prefix: "<b><dark_gray>[<gradient:#2986D7:#9206C2>VBank</gradient><dark_gray>]<reset><gray> "
 no_permission: "<prefix><red>Das darfst du nicht!"
 input_no_number: "<prefix><red>Gebe eine gültige Zahl an!"
+not_enough_money: "<prefix><red>Du hast nicht genug Geld!"
+bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yellow><amount> <currency_name> <gray>into your bank account"
 
 Commands:
   BankCommand:
