@@ -41,6 +41,8 @@ public class BankAdminCommand extends VaxCommand {
 
             if(args.length == 0) {
                 LanguageUtils.getMessageList("Commands.BankAdminCommand.Usage").forEach(player::sendMessage);
+            } else if(args.length == 1) {
+                handleBalance(player, args[0]);
             } else if(args.length == 2) {
                 if(args[0].equalsIgnoreCase(LanguageUtils.getMessageString("Commands.BankAdminCommand.Arguments.Reset"))) {
                     handleReset(player, args[1]);
@@ -53,6 +55,8 @@ public class BankAdminCommand extends VaxCommand {
                 } else if(args[0].equalsIgnoreCase(LanguageUtils.getMessageString("Commands.BankAdminCommand.Arguments.Remove"))) {
                     handleRemove(player, args[1], args[2]);
                 }
+            } else {
+                LanguageUtils.getMessageList("Commands.BankAdminCommand.Usage").forEach(player::sendMessage);
             }
 
         }
@@ -80,11 +84,22 @@ public class BankAdminCommand extends VaxCommand {
                 }
 
                 return filteredSuggestions;
-            } else if(args.length == 2) {
-
             }
         }
         return super.tabComplete(sender, alias, args);
+    }
+
+    private void handleBalance(Player player, String name) {
+        userRepository.findByFieldName("name", name).thenAccept(user -> {
+            if(user == null) {
+                player.sendMessage(LanguageUtils.getMessage("user_not_found"));
+                return;
+            }
+            player.sendMessage(LanguageUtils.getMessage("bank_balance",
+                    Placeholder.parsed("balance", NumberUtils.formatDouble(user.getBalance())),
+                    Placeholder.parsed("currency_name", LanguageUtils.getMessageString("currency_name"))
+            ));
+        });
     }
 
     private void handleRemove(Player player, String name, String amount) {
