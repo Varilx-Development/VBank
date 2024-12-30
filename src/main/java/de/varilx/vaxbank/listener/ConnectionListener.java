@@ -22,7 +22,7 @@ public class ConnectionListener implements Listener {
 
     public ConnectionListener(VBank plugin) {
         this.plugin = plugin;
-        this.userRepository = (Repository<BankUser, UUID>) plugin.getDatabaseService().getRepositoryMap().get(BankUser.class);
+        this.userRepository = (Repository<BankUser, UUID>) plugin.getDatabaseService().getRepository(BankUser.class);
     }
 
     @EventHandler
