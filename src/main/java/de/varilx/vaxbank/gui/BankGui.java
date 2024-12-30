@@ -128,7 +128,7 @@ public class BankGui {
                             .build()) {
                         @Override
                         public void handleClick(InventoryClickEvent inventoryClickEvent) {
-
+                            new TransactionsGui(holder, plugin);
                         }
                     })
                     .holder(holder)
