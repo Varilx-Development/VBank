@@ -193,7 +193,7 @@ Mongo:
 
 # SQL
 SQL:
-  connection-string: "jdbc:sqlite:plugins/VDiscordIntegration/database.db"
+  connection-string: "jdbc:sqlite:plugins/VBank/database.db"
   username: "username" # Not required for sqlite
   password: "password" # Not required for sqlite
 ```
