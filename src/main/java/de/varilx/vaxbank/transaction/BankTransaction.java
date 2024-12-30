@@ -26,7 +26,7 @@ public class BankTransaction {
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID transactionId;
 
-    UUID sender, receiver;
+    UUID accountId;
     double amount, balance;
     BankTransactionType type;
     long time;
