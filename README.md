@@ -1,12 +1,17 @@
+![v-bank](https://github.com/user-attachments/assets/025b2a41-1e36-497f-baa9-f7267d79f205)
+
 ![Discord](https://img.shields.io/discord/1322873747535040512)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/Varilx-Development/VDiscordIntegration/build.yml?branch=main)
 ![Release](https://img.shields.io/github/v/release/Varilx-Development/VDiscordIntegration)
 
 # VBank Configuration
 
-A bank plugin that works with Vault
+A bank plugin that works with **Vault** and fully Customizable!
 
 ---
+
+# Preview
+![bank-show](https://github.com/user-attachments/assets/e972256f-8a85-4f31-a897-3c2deb15b690)
 
 
 ## Configuration Overview
@@ -21,11 +26,24 @@ Customize messages for server startup, player join/quit, and Discord chat using 
 We currently support: `de` and `en`
 
 ### 3. **Commands**
-Commands and arguments are completely adjustable
+`/bank` - Opens the GUI.
+
+`/bankadmin add (player) (amount)` - Giving the Player Bank Balance.
+
+`/bankadmin remove (player) (amount)` - Removing the Player Bank Balance.
+
+`/bankadmin set (player) (amount)` - Sets the Balance on the Amount.
+
+`/bankadmin reset (player)` - Resets fully the Bank Balance from the Player.
+
+
+### 4. **Permissions** 
+`vbank.bankadmin` | Fully configurable in the Config.yml.
+- Permission to use the `/bankadmin` Command.
 
 ---
 
-## Setup Instructions
+## Setup Instructions 
 
 1. Download and install the plugin on your Minecraft server.
 2. Configure the `config.yml` file with your preferred settings:
@@ -189,7 +207,12 @@ SQL:
 ---
 
 
+
 ## Notes
 
 - The MiniMessage format is highly flexible for styling and formatting messages. Refer to the [MiniMessage documentation](https://docs.advntr.dev/minimessage/format.html) for more details.
 - SQLite is the simplest database option as it doesn’t require additional setup.
+
+<a href="https://discord.gg/ZPyb9g6Gs4">
+    <img src="https://github.com/user-attachments/assets/e2c942ae-d79a-4606-b4b0-240fd92c9a90" alt="Join our Discord for help" width="400">
+</a>
