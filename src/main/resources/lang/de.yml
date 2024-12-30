@@ -5,8 +5,40 @@ prefix: "<b><dark_gray>[<gradient:#2986D7:#9206C2>VBank</gradient><dark_gray>]<r
 no_permission: "<prefix><red>Das darfst du nicht!"
 input_no_number: "<prefix><red>Gebe eine gültige Zahl an!"
 not_enough_money: "<prefix><red>Du hast nicht genug Geld!"
-bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yellow><amount> <currency_name> <gray>into your bank account"
+bank_deposit_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <currency_name> <gray>auf dein Bankkonto eingezahlt"
 input_number_positive: "<prefix><red>Gebe eine Positive Zahl an!"
+bank_withdraw_success: "<prefix>Du hast <green>erfolgreich <yellow><amount> <currency_name> <gray>von deinem Bankkonto abgehoben"
+
+withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
+deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
+
+Gui:
+  Title: "<prefix>Bankaccount"
+  Items:
+    Placeholders:
+      1: "GRAY_STAINED_GLASS_PANE"
+      2: "WHITE_STAINED_GLASS_PANE"
+    Balance:
+      Material: "SUNFLOWER"
+      Name: "<gold>Guthaben"
+      Lore:
+        - ""
+        - "<dark_gray>» <yellow><balance> <balance_name>"
+    Withdraw:
+      Name: "<red>Geld auszahlen"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Klicke hier um Geld abzuheben"
+    Deposit:
+      Name: "<red>Geld einzahlen"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Klicke hier um Geld einzuzahlen"
+    Transactions:
+      Name: "<red>Transaktionen"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Klicke hier um deine Transaktionen zu sehen"
 
 Commands:
   BankCommand:
@@ -14,7 +46,3 @@ Commands:
     Arguments:
       Add: 'einzahlen'
       Remove: 'auszahlen'
-    Usage:
-      - "<prefix>Bank Command Hilfe<dark_gray>:"
-      - "<prefix>Nutze <yellow>/bank add <dark_gray><<<yellow>Menge<dark_gray>>"
-      - "<prefix>Nutze <yellow>/bank remove <dark_gray><<<yellow>Menge<dark_gray>>"

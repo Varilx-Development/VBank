@@ -9,13 +9,43 @@ bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yello
 bank_withdraw_success: "<prefix>u have <green>successfully <gray>withdrawed <yellow><amount> <currency_name> <gray>from your bank account"
 input_number_positive: "<prefix>Enter a positive number"
 
+withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
+deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
+
+Gui:
+  Title: "<prefix>Bankaccount"
+  Items:
+    Placeholders:
+      1:
+        Material: "GRAY_STAINED_GLASS_PANE"
+      2:
+        Material: "WHITE_STAINED_GLASS_PANE"
+    Balance:
+      Material: "SUNFLOWER"
+      Name: "<gold>Balance"
+      Lore:
+        - ""
+        - "<dark_gray>» <yellow><balance> <balance_name>"
+    Withdraw:
+      Name: "<red>Withdraw money"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Click here to withdraw money"
+    Deposit:
+      Name: "<red>Deposit money"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Click here to deposit money"
+    Transactions:
+      Name: "<red>Transactions"
+      Lore:
+        - ""
+        - "<!i><dark_gray>» <gray>Click here to see your transactions"
+
+
 Commands:
   BankCommand:
     Name: 'bank'
     Arguments:
       Add: 'add'
       Remove: 'remove'
-    Usage:
-      - "<prefix>Bank Command help<dark_gray>:"
-      - "<prefix>Use <yellow>/bank add <dark_gray><<<yellow>Amount<dark_gray>>"
-      - "<prefix>Use <yellow>/bank remove <dark_gray><<<yellow>Amount<dark_gray>>"
