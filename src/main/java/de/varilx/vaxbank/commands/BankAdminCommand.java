@@ -6,6 +6,8 @@ import de.varilx.database.repository.Repository;
 import de.varilx.utils.NumberUtils;
 import de.varilx.utils.language.LanguageUtils;
 import de.varilx.vaxbank.VBank;
+import de.varilx.vaxbank.transaction.BankTransaction;
+import de.varilx.vaxbank.transaction.type.BankTransactionType;
 import de.varilx.vaxbank.user.BankUser;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -126,6 +128,17 @@ public class BankAdminCommand extends VaxCommand {
             }
 
             user.removeBalance(realAmount);
+
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(user.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setBalance(user.getBalance());
+            transaction.setAmount(realAmount);
+            transaction.setType(BankTransactionType.ADMIN_REMOVE);
+            transaction.setUser(user);
+
+            user.addTransaction(transaction);
+
             userRepository.save(user);
             player.sendMessage(LanguageUtils.getMessage("bank_remove_success", Placeholder.parsed("amount", NumberUtils.formatDouble(realAmount))));
         });
@@ -148,6 +161,16 @@ public class BankAdminCommand extends VaxCommand {
                 player.sendMessage(LanguageUtils.getMessage("input_number_positive"));
                 return;
             }
+
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(user.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setBalance(user.getBalance());
+            transaction.setAmount(realAmount);
+            transaction.setType(BankTransactionType.ADMIN_ADD);
+            transaction.setUser(user);
+
+            user.addTransaction(transaction);
 
             user.addBalance(realAmount);
             userRepository.save(user);
@@ -173,6 +196,16 @@ public class BankAdminCommand extends VaxCommand {
                 return;
             }
 
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(user.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setBalance(user.getBalance());
+            transaction.setAmount(realAmount);
+            transaction.setType(BankTransactionType.ADMIN_SET);
+            transaction.setUser(user);
+
+            user.addTransaction(transaction);
+
             user.setBalance(realAmount);
             userRepository.save(user);
             player.sendMessage(LanguageUtils.getMessage("bank_set_success", Placeholder.parsed("balance", NumberUtils.formatDouble(user.getBalance()))));
@@ -187,6 +220,15 @@ public class BankAdminCommand extends VaxCommand {
                 return;
             }
             user.setBalance(0.0);
+
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(user.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setBalance(user.getBalance());
+            transaction.setAmount(0.0);
+            transaction.setType(BankTransactionType.ADMIN_RESET);
+            transaction.setUser(user);
+            user.addTransaction(transaction);
             userRepository.save(user);
             player.sendMessage(LanguageUtils.getMessage("bank_reset_success"));
         });
