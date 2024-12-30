@@ -3,6 +3,7 @@ package de.varilx.vaxbank;
 import de.varilx.BaseAPI;
 import de.varilx.command.registry.VaxCommandRegistry;
 import de.varilx.database.Service;
+import de.varilx.vaxbank.commands.BankAdminCommand;
 import de.varilx.vaxbank.commands.BankCommand;
 import de.varilx.vaxbank.listener.ConnectionListener;
 import de.varilx.vaxbank.user.BankUser;
@@ -43,6 +44,7 @@ public final class VBank extends JavaPlugin {
     private void registerCommands() {
         VaxCommandRegistry commandRegistry = new VaxCommandRegistry();
         commandRegistry.registerCommand(new BankCommand(this));
+        commandRegistry.registerCommand(new BankAdminCommand(this));
     }
 
     private void registerListeners() {
