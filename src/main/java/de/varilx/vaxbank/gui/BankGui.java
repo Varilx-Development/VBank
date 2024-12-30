@@ -6,11 +6,15 @@ import de.varilx.database.repository.Repository;
 import de.varilx.inventory.GameInventory;
 import de.varilx.inventory.builder.GameInventoryBuilder;
 import de.varilx.inventory.item.ClickableItem;
+import de.varilx.utils.Conversation;
 import de.varilx.utils.MathUtils;
+import de.varilx.utils.NumberUtils;
 import de.varilx.utils.itembuilder.ItemBuilder;
 import de.varilx.utils.itembuilder.SkullBuilder;
 import de.varilx.utils.language.LanguageUtils;
 import de.varilx.vaxbank.VBank;
+import de.varilx.vaxbank.transaction.BankTransaction;
+import de.varilx.vaxbank.transaction.type.BankTransactionType;
 import de.varilx.vaxbank.user.BankUser;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
@@ -21,6 +25,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class BankGui {
@@ -80,7 +85,19 @@ public class BankGui {
                             .build()) {
                         @Override
                         public void handleClick(InventoryClickEvent inventoryClickEvent) {
-
+                            holder.closeInventory();
+                            Conversation conversation = new Conversation(plugin, holder, LanguageUtils.getMessage("conversation_prompt"), TimeUnit.SECONDS, 30);
+                            conversation.addListener(new Conversation.ConvoListener() {
+                                @Override
+                                public boolean onMessage(Player player, Component component, String plain) {
+                                    if(plain.toLowerCase().equalsIgnoreCase("cancel") || plain.toLowerCase().equalsIgnoreCase("abbrechen")) {
+                                        conversation.cancel(true);
+                                        openGui();
+                                    }
+                                    handleWithdraw(plain);
+                                    return true;
+                                }
+                            });
                         }
                     })
                     .addItem('M', new ClickableItem(new SkullBuilder(Material.PLAYER_HEAD)
@@ -90,7 +107,19 @@ public class BankGui {
                             .build()) {
                         @Override
                         public void handleClick(InventoryClickEvent inventoryClickEvent) {
-
+                            holder.closeInventory();
+                            Conversation conversation = new Conversation(plugin, holder, LanguageUtils.getMessage("conversation_prompt"), TimeUnit.SECONDS, 30);
+                            conversation.addListener(new Conversation.ConvoListener() {
+                                @Override
+                                public boolean onMessage(Player player, Component component, String plain) {
+                                    if(plain.toLowerCase().equalsIgnoreCase("cancel") || plain.toLowerCase().equalsIgnoreCase("abbrechen")) {
+                                        conversation.cancel(true);
+                                        openGui();
+                                    }
+                                    handleDeposit(plain);
+                                    return true;
+                                }
+                            });
                         }
                     })
                     .addItem('Y', new ClickableItem(new ItemBuilder(Material.HEAVY_CORE)
@@ -110,5 +139,91 @@ public class BankGui {
             return null;
         });
     }
+
+    private void handleWithdraw(String input) {
+        if(!NumberUtils.isNumeric(input)) {
+            holder.sendMessage(LanguageUtils.getMessage("input_no_number"));
+            return;
+        }
+
+        double amount = Double.parseDouble(input);
+
+        if(amount <= 0) {
+            holder.sendMessage(LanguageUtils.getMessage("input_number_positive"));
+            return;
+        }
+
+
+        userRepository.findFirstById(holder.getUniqueId()).thenAccept(user -> {
+            if(user.getBalance() < amount) {
+                holder.sendMessage(LanguageUtils.getMessage("not_enough_money"));
+                return;
+            }
+
+            user.removeBalance(amount);
+            plugin.getEconomy().withdrawPlayer(holder, amount);
+            holder.sendMessage(LanguageUtils.getMessage("bank_withdraw_success",
+                    Placeholder.parsed("amount", NumberUtils.formatDouble(amount)),
+                    Placeholder.parsed("currency_name", LanguageUtils.getMessageString("currency_name"))
+            ));
+
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(holder.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setType(BankTransactionType.REMOVE);
+            transaction.setAmount(amount);
+            transaction.setBalance(user.getBalance());
+            transaction.setUser(user);
+            user.addTransaction(transaction);
+            userRepository.save(user);
+        }).exceptionally(throwable -> {
+            throwable.printStackTrace();
+            return null;
+        });
+    }
+
+    private void handleDeposit(String input) {
+        if(!NumberUtils.isNumeric(input)) {
+            holder.sendMessage(LanguageUtils.getMessage("input_no_number"));
+            return;
+        }
+        double amount = Double.parseDouble(input);
+
+        if(!plugin.getEconomy().has(holder, amount)) {
+            holder.sendMessage(LanguageUtils.getMessage("not_enough_money"));
+            return;
+        }
+
+        if(amount <= 0) {
+            holder.sendMessage(LanguageUtils.getMessage("input_number_positive"));
+            return;
+        }
+
+        plugin.getEconomy().withdrawPlayer(holder, amount);
+
+        userRepository.findFirstById(holder.getUniqueId()).thenAccept(user -> {
+            user.addBalance(amount);
+            holder.sendMessage(LanguageUtils.getMessage("bank_deposit_success",
+                    Placeholder.parsed("amount", NumberUtils.formatDouble(amount)),
+                    Placeholder.parsed("currency_name", LanguageUtils.getMessageString("currency_name"))
+            ));
+
+            BankTransaction transaction = new BankTransaction();
+            transaction.setAccountId(holder.getUniqueId());
+            transaction.setTime(System.currentTimeMillis());
+            transaction.setType(BankTransactionType.ADD);
+            transaction.setAmount(amount);
+            transaction.setBalance(user.getBalance());
+            transaction.setUser(user);
+
+            user.addTransaction(transaction);
+
+            userRepository.save(user);
+        }).exceptionally(throwable -> {
+            throwable.printStackTrace();
+            return null;
+        });
+    }
+
 
 }
