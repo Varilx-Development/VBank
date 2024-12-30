@@ -5,9 +5,11 @@ import de.varilx.BaseAPI;
 import de.varilx.command.VaxCommand;
 import de.varilx.config.Configuration;
 import de.varilx.database.repository.Repository;
+import de.varilx.utils.MathUtils;
 import de.varilx.utils.NumberUtils;
 import de.varilx.utils.language.LanguageUtils;
 import de.varilx.vaxbank.VBank;
+import de.varilx.vaxbank.gui.BankGui;
 import de.varilx.vaxbank.transaction.BankTransaction;
 import de.varilx.vaxbank.transaction.type.BankTransactionType;
 import de.varilx.vaxbank.user.BankUser;
@@ -40,7 +42,7 @@ public class BankCommand extends VaxCommand {
         if(sender instanceof Player player) {
 
             if(args.length == 0) {
-                printUsage(player);
+                new BankGui(plugin, player);
             } else if(args.length == 2) {
                 if(args[0].toLowerCase().equalsIgnoreCase(LanguageUtils.getMessageString("Commands.BankCommand.Arguments.Add"))) {
                     if(!NumberUtils.isNumeric(args[1])) {
@@ -141,10 +143,6 @@ public class BankCommand extends VaxCommand {
             );
         }
         return super.tabComplete(sender, alias, args);
-    }
-
-    private void printUsage(Player player) {
-        LanguageUtils.getMessageList("Commands.BankCommand.Usage").forEach(player::sendMessage);
     }
 
 }
