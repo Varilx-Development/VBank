@@ -2,7 +2,6 @@ package de.varilx.vaxbank.user;
 
 
 import de.varilx.database.id.Id;
-import de.varilx.vaxbank.transaction.BankTransaction;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,6 +27,6 @@ public class BankUser {
 
     String name;
     double balance;
-    List<BankTransaction> transactions;
+    List<UUID> transactions;
 
 }
