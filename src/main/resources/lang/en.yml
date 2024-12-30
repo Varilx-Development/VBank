@@ -6,6 +6,8 @@ no_permission: "<prefix><red>You don't have Permission to do this!"
 input_no_number: "<prefix><red>Enter a valid number"
 not_enough_money: "<prefix>You don't have enough money"
 bank_deposit_success: "<prefix>u have <green>successfully <gray>deposited <yellow><amount> <currency_name> <gray>into your bank account"
+bank_withdraw_success: "<prefix>u have <green>successfully <gray>withdrawed <yellow><amount> <currency_name> <gray>from your bank account"
+input_number_positive: "<prefix>Enter a positive number"
 
 Commands:
   BankCommand:
