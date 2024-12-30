@@ -1,7 +1,7 @@
 package de.varilx.vaxbank.user;
 
 
-import de.varilx.database.id.Id;
+import de.varilx.database.id.MongoId;
 import de.varilx.vaxbank.transaction.BankTransaction;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,7 +19,7 @@ import java.util.UUID;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class BankUser {
 
-    @Id
+    @MongoId
     @jakarta.persistence.Id
     UUID uniqueId;
 
