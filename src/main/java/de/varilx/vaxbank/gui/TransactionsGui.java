@@ -105,13 +105,28 @@ public class TransactionsGui {
     }
 
     private ClickableItem transactionItem(BankTransaction transaction) {
+
+        String skinUrl = "";
+
+        switch (transaction.getType()) {
+            case ADD, ADMIN_ADD, ADMIN_SET -> {
+                skinUrl = LanguageUtils.getMessageString("transaction_item_add_skull");
+            }
+            case REMOVE, ADMIN_REMOVE ->  {
+                skinUrl = LanguageUtils.getMessageString("transaction_item_remove_skull");
+            }
+            case ADMIN_RESET -> {
+                skinUrl = LanguageUtils.getMessageString("admin_reset_skull");
+            }
+        }
+
         return new ClickableItem(new SkullBuilder()
-                .setSkullTextureFromUrl((transaction.getType() == BankTransactionType.ADD ? LanguageUtils.getMessageString("transaction_item_add_skull") : LanguageUtils.getMessageString("transaction_item_remove_skull")))
+                .setSkullTextureFromUrl(skinUrl)
                 .name(LanguageUtils.getMessage("TransactionsGui.Items.TransactionItem.Name", Placeholder.parsed("date", dateFormat.format(transaction.getTime()))))
                 .lore(LanguageUtils.getMessageList("TransactionsGui.Items.TransactionItem.Lore",
                         Placeholder.parsed("amount", MathUtils.formatNumber(transaction.getAmount())),
                         Placeholder.parsed("balance", MathUtils.formatNumber(transaction.getBalance())),
-                        Placeholder.parsed("type", (transaction.getType() == BankTransactionType.ADD ? LanguageUtils.getMessageString("add") : LanguageUtils.getMessageString("remove")))
+                        Placeholder.parsed("type", transaction.getType().getDisplayName())
                 ))
                 .build()) {
             @Override
