@@ -32,7 +32,7 @@ public class BankCommand extends VaxCommand {
     public BankCommand(VBank plugin) {
         super(LanguageUtils.getMessageString("Commands.BankCommand.Name"));
         this.plugin = plugin;
-        this.userRepository = (Repository<BankUser, UUID>) plugin.getDatabaseService().getRepositoryMap().get(BankUser.class);
+        this.userRepository = (Repository<BankUser, UUID>) plugin.getDatabaseService().getRepository(BankUser.class);
     }
 
     @Override
@@ -75,9 +75,9 @@ public class BankCommand extends VaxCommand {
                         transaction.setBalance(user.getBalance());
                         transaction.setUser(user);
 
-                        user.getTransactions().add(transaction);
+                        //user.getTransactions().add(transaction);
 
-                        userRepository.save(user);
+                        userRepository.insert(user);
                     }).exceptionally(throwable -> {
                         throwable.printStackTrace();
                         return null;
@@ -104,19 +104,7 @@ public class BankCommand extends VaxCommand {
     }
 
     private void printUsage(Player player) {
-        String language = Optional.ofNullable(BaseAPI.getBaseAPI().getConfiguration().getConfig().getString("language")).orElse("en");
-        Configuration langConfig = BaseAPI.getBaseAPI().getLanguageConfigurations().get(language);
-
-        List<TagResolver> baseResolvers = new ArrayList<>();
-
-        @Nullable String prefix = langConfig.getConfig().getString("prefix");
-        if (prefix != null) baseResolvers.add(Placeholder.parsed("prefix", prefix));
-
-        List<Component> components = new ArrayList<>();
-        langConfig.getConfig().getStringList("Commands.BankCommand.Usage")
-                .forEach(line -> components.add(LanguageUtils.getMessage(line, baseResolvers.toArray(TagResolver[]::new))));
-
-        components.forEach(player::sendMessage);
+        LanguageUtils.getMessageList("Commands.BankCommand.Usage").forEach(player::sendMessage);
     }
 
 }
