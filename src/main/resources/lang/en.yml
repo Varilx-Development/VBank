@@ -1,0 +1,16 @@
+# Using Minimessage https://docs.advntr.dev/minimessage/format.html
+
+prefix: "<b><dark_gray>[<gradient:#2986D7:#9206C2>VBank</gradient><dark_gray>]<reset><gray> "
+no_permission: "<prefix><red>You don't have Permission to do this!"
+input_no_number: "<prefix><red>Enter a valid number"
+
+Commands:
+  BankCommand:
+    Name: 'bank'
+    Arguments:
+      Add: 'add'
+      Remove: 'remove'
+    Usage:
+      - "<prefix>Bank Command help<dark_gray>:"
+      - "<prefix>Use <yellow>/bank add <dark_gray><<<yellow>Amount<dark_gray>>"
+      - "<prefix>Use <yellow>/bank remove <dark_gray><<<yellow>Amount<dark_gray>>"
