@@ -1,5 +1,6 @@
 # Using Minimessage https://docs.advntr.dev/minimessage/format.html
 
+# General Messages
 currency_name: "coins"
 prefix: "<b><dark_gray>[<gradient:#119143:#053E88>VBank</gradient><dark_gray>]<reset><gray> "
 no_permission: "<prefix><red>You don't have Permission to do this!"
@@ -18,15 +19,21 @@ conversation_prompt: "<prefix>Please enter an amount. <newline> <prefix>Write <d
 date_format: "MM/dd/yyyy - hh:mm a"
 add: "<green>Add"
 remove: "<red>Remove"
+admin_add: "<green>Add <dark_gray>(<red>Admin<dark_gray>)"
+admin_remove: "<green>Remove <dark_gray>(<red>Admin<dark_gray>)"
+admin_set: "<green>Set <dark_gray>(<red>Admin<dark_gray>)"
+admin_reset: "<green>Reset <dark_gray>(<red>Admin<dark_gray>)"
 
-
+# Skulls
 withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
 deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
 transaction_item_add_skull: "https://textures.minecraft.net/texture/5ff31431d64587ff6ef98c0675810681f8c13bf96f51d9cb07ed7852b2ffd1"
 transaction_item_remove_skull: "https://textures.minecraft.net/texture/4e4b8b8d2362c864e062301487d94d3272a6b570afbf80c2c5b148c954579d46"
 back_skull: "https://textures.minecraft.net/texture/bd8a99db2c37ec71d7199cd52639981a7513ce9cca9626a3936f965b131193"
 next_skull: "https://textures.minecraft.net/texture/3edd20be93520949e6ce789dc4f43efaeb28c717ee6bfcbbe02780142f716"
+admin_reset_skull: "https://textures.minecraft.net/texture/e9cdb9af38cf41daa53bc8cda7665c509632d14e678f0f19f263f46e541d8a30"
 
+# Guis
 Gui:
   Title: "<prefix>Bankaccount"
   Items:
@@ -81,6 +88,7 @@ TransactionsGui:
         - ""
         - "<dark_gray>| <gray>Klicke hier um zur nächsten Seite zu gelangen"
 
+# Commands
 Commands:
   BankCommand:
     Name: 'bank'

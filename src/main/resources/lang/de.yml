@@ -17,6 +17,10 @@ conversation_prompt: "<prefix>Bitte gebe eine Anzahl an. <newline> <prefix>Schre
 date_format: "dd.MM.yyyy - HH:mm"
 add: "<green>Einzahlung"
 remove: "<red>Abhebung"
+admin_add: "<green>Einzahlung <dark_gray>(<red>Admin<dark_gray>)"
+admin_remove: "<green>Abhebung <dark_gray>(<red>Admin<dark_gray>)"
+admin_set: "<green>Setzung <dark_gray>(<red>Admin<dark_gray>)"
+admin_reset: "<green>Reset <dark_gray>(<red>Admin<dark_gray>)"
 
 withdraw_item_skull: "https://textures.minecraft.net/texture/482c23992a02725d9ed1bcd90fd0307c8262d87e80ce6fac8078387de18d0851"
 deposit_item_skull: "https://textures.minecraft.net/texture/177bb66fc73a97cefcb3a4bfdccb12281f44dd326ccd0ff39d47e985bfeff343"
