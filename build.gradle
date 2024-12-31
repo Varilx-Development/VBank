@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'de.varilx'
-version = '$project_version'
+version = "$project_version"
 
 repositories {
     mavenCentral()
