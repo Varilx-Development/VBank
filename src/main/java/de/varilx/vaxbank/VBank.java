@@ -26,7 +26,7 @@ public final class VBank extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new BaseAPI(this).enable();
+        new BaseAPI(this, 24309).enable();
         initializeDatabaseService();
         if (!setupEconomy()) {
             getLogger().severe("Vault could not be found! Please install Vault and an Economy plugin.");
