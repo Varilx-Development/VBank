@@ -1,6 +1,7 @@
 package de.varilx.vaxbank;
 
 import de.varilx.BaseAPI;
+import de.varilx.BaseSpigotAPI;
 import de.varilx.command.registry.VaxCommandRegistry;
 import de.varilx.database.Service;
 import de.varilx.vaxbank.commands.BankAdminCommand;
@@ -15,6 +16,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
 import java.util.UUID;
 
 @Getter
@@ -26,7 +28,7 @@ public final class VBank extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        new BaseAPI(this, 24309).enable();
+        new BaseSpigotAPI(this, 24309).enable();
         initializeDatabaseService();
         if (!setupEconomy()) {
             getLogger().severe("Vault could not be found! Please install Vault and an Economy plugin.");
@@ -53,7 +55,7 @@ public final class VBank extends JavaPlugin {
     }
 
     private void initializeDatabaseService() {
-        databaseService = Service.load(BaseAPI.getBaseAPI().getDatabaseConfiguration().getConfig(), getClassLoader());
+        databaseService = Service.load(Objects.requireNonNull(BaseAPI.get().getDatabaseConfiguration()), getClassLoader());
         databaseService.create(BankUser.class, UUID.class);
     }
 

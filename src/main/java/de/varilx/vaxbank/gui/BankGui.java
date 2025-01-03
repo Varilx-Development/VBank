@@ -53,7 +53,7 @@ public class BankGui {
 
     private void openGui() {
         userRepository.findFirstById(holder.getUniqueId()).thenAccept(user -> {
-            GameInventory inventory = new GameInventoryBuilder(BaseAPI.getBaseAPI()).pattern(PATTERN)
+            GameInventory inventory = new GameInventoryBuilder(BaseAPI.get()).pattern(PATTERN)
                     .inventoryName(LanguageUtils.getMessage("Gui.Title"))
                     .size(6 * 9).addItem('G', new ClickableItem(new ItemBuilder(Material.valueOf(LanguageUtils.getMessageString("Gui.Items.Placeholders.1.Material")))
                             .name(Component.empty()).build()) {

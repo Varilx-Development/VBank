@@ -1,11 +1,8 @@
 package de.varilx.vaxbank.commands;
 
 
-import de.varilx.BaseAPI;
 import de.varilx.command.VaxCommand;
-import de.varilx.config.Configuration;
 import de.varilx.database.repository.Repository;
-import de.varilx.utils.MathUtils;
 import de.varilx.utils.NumberUtils;
 import de.varilx.utils.language.LanguageUtils;
 import de.varilx.vaxbank.VBank;
@@ -15,13 +12,10 @@ import de.varilx.vaxbank.transaction.type.BankTransactionType;
 import de.varilx.vaxbank.user.BankUser;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
-import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
-import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
