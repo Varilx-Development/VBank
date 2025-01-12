@@ -1,8 +1,13 @@
 ![v-bank](https://github.com/user-attachments/assets/025b2a41-1e36-497f-baa9-f7267d79f205)
-
 ![Discord](https://img.shields.io/discord/1322873747535040512)
 ![Build Status](https://img.shields.io/github/actions/workflow/status/Varilx-Development/VBank/build.yml?branch=main)
 ![Release](https://img.shields.io/github/v/release/Varilx-Development/VBank)
+
+<p align="center">
+    <a href="https://modrinth.com/plugin/vbank">
+        <img src="https://raw.githubusercontent.com/vLuckyyy/badges/main/avaiable-on-modrinth.svg" alt="Available on Modrinth" />
+    </a>
+</p>
 
 # VBank Configuration
 
